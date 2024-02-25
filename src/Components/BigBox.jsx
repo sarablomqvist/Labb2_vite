@@ -1,24 +1,32 @@
-import { useState } from "react";
+import { useReducer, useMemo } from "react";
 import "./BigBox.css";
 import Search from "./Search";
 import Row from "./Row";
 import Footer from "./Footer";
 import H1 from "./H1";
+import ListContext from "./ListContext";
 
-function BigBox(props) {
-  const [list, setList] = useState([]);
+function BigBox() {
+  const [list, dispatch] = useReducer((state, action) => {
+    if (action.type === "add") {
+      return [...state, action.show];
+    }
+  }, []);
 
-  const secondList = list.map((item, index) => <Row key={index} item={item} />);
-
-  const addShow = (show) => setList([...list, show]);
+  const secondList = useMemo(
+    () => list.map((item, index) => <Row key={index} item={item} />),
+    [list]
+  );
 
   return (
-    <div className="bigBox">
-      <H1 />
-      <Search addShow={addShow} />
-      <div className="secondList">{secondList}</div>
-      <Footer />
-    </div>
+    <ListContext.Provider value={list}>
+      <div className="bigBox">
+        <H1 />
+        <Search dispatch={dispatch} />
+        <div className="secondList">{secondList}</div>
+        <Footer />
+      </div>
+    </ListContext.Provider>
   );
 }
 

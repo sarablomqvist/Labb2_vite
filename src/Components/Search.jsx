@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import "./Search.css";
 
-function Search({ addShow }) {
+function Search({ dispatch }) {
   const input = useRef(null);
   const [searchText, setSearchText] = useState("");
   const [result, setResult] = useState();
 
-  const onShowClick = (show) => {
-    addShow(show);
+  const onShowClick = useCallback((show) => {
+    dispatch({ type: "add", show });
     input.current.value = "";
     setSearchText("");
-  };
+  }, []);
 
   useEffect(() => {
     if (searchText === "") {
