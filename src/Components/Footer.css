@@ -1,0 +1,11 @@
+#root {
+    margin: auto;
+    text-align: center;
+}
+
+
+.footer {
+    color: pink;
+    position: absolute;
+    padding-top: 580px;
+}
