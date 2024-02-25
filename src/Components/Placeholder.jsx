@@ -1,9 +1,12 @@
+import { useRef } from "react";
 import "./Placeholder.css";
 
 function Placeholder() {
+  const myInput = useRef(null);
+
   return (
     <>
-      <button onClick="addSerie">lägg till</button>
+      <button>lägg till</button>
       <div className="placeholder">
         <input
           ref={myInput}

@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import "./App.css";
 import BigBox from "./BigBox";
 
 function App() {
