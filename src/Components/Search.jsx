@@ -1,21 +1,21 @@
 import { useRef } from "react";
-import "./Placeholder.css";
+import "./Search.css";
 
-function Placeholder() {
+function Search() {
   const myInput = useRef(null);
 
   return (
     <>
       <button>lägg till</button>
-      <div className="placeholder">
+      <div className="search">
         <input
           ref={myInput}
           name="addText"
           id="addText"
           placeholder="Vad letar du efter?"
-          className="placeholder"
+          className="search"
         ></input>
-        <div className="Curtain">
+        <div className="curtain">
           <div className="text">Beverly Hills</div>
           <div className="text">Greys Anatomy</div>
           <div className="text">Outlander</div>
@@ -25,4 +25,4 @@ function Placeholder() {
   );
 }
 
-export default Placeholder;
+export default Search;

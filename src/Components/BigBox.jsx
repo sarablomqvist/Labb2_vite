@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./BigBox.css";
-import Placeholder from "./Placeholder";
+import Search from "./Search";
 import Rows from "./Rows";
 import DeleteAllButton from "./DeleteAllButton";
 import Footer from "./Footer";
@@ -16,7 +16,7 @@ function BigBox(props) {
   return (
     <div className="bigBox">
       <H1 />
-      <Placeholder />
+      <Search />
       <div className="secondList">{secondList}</div>
       <DeleteAllButton />
       <Footer />
