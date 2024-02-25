@@ -10,10 +10,12 @@ function BigBox(props) {
 
   const secondList = list.map((item, index) => <Row key={index} item={item} />);
 
+  const addShow = (show) => setList([...list, show]);
+
   return (
     <div className="bigBox">
       <H1 />
-      <Search />
+      <Search addShow={addShow} />
       <div className="secondList">{secondList}</div>
       <Footer />
     </div>

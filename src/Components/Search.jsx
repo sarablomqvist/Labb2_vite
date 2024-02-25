@@ -1,23 +1,63 @@
-import { useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Search.css";
 
-function Search() {
-  const myInput = useRef(null);
+function Search({ addShow }) {
+  const input = useRef(null);
+  const [searchText, setSearchText] = useState("");
+  const [result, setResult] = useState();
+
+  const onShowClick = (show) => {
+    addShow(show);
+    input.current.value = "";
+    setSearchText("");
+  };
+
+  useEffect(() => {
+    if (searchText === "") {
+      setResult();
+      return;
+    }
+
+    const fetchData = async () => {
+      const baseUrl = "https://api.tvmaze.com/search/shows?q=";
+      const url = baseUrl + searchText;
+
+      const response = await fetch(url);
+      setResult(await response.json());
+    };
+
+    fetchData();
+  }, [searchText]);
+
+  let curtainClasses = "curtain";
+  let curtainRows = [];
+
+  if (result) {
+    curtainRows = result.map((item) => (
+      <div
+        key={item.show.id}
+        className="text"
+        onClick={() => onShowClick(item.show)}
+      >
+        {item.show.name}
+      </div>
+    ));
+  } else {
+    curtainClasses += " hidden";
+  }
 
   return (
     <div className="search">
       <input
-        ref={myInput}
+        ref={input}
         name="addText"
         id="addText"
         placeholder="Vad letar du efter?"
-        className="search"
+        className="searchField"
+        onChange={(event) => setSearchText(event.target.value)}
       ></input>
-      <button>lägg till</button>
-      <div className="curtain">
-        <div className="text">Beverly Hills</div>
-        <div className="text">Greys Anatomy</div>
-        <div className="text">Outlander</div>
+      <div className="curtainContainer">
+        <div className={curtainClasses}>{curtainRows}</div>
       </div>
     </div>
   );
