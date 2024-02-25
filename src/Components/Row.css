@@ -1,4 +1,4 @@
-.rader {
+.row {
   display: flex;
   top: 230px;
 }
@@ -16,7 +16,7 @@
   color: #35363c;
 }
 
-.rows {
+.name {
   border: 1px solid black;
   background-color: white;
   padding-inline: 30px;
