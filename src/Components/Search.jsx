@@ -1,5 +1,5 @@
+import { css } from "@emotion/react";
 import { useState, useRef, useEffect, useCallback } from "react";
-import "./Search.css";
 
 function Search({ dispatch }) {
   const input = useRef(null);
@@ -29,35 +29,73 @@ function Search({ dispatch }) {
     fetchData();
   }, [searchText]);
 
-  let curtainClasses = "curtain";
+  const curtainStyles = css`
+    text-align: start;
+    padding-left: 10px;
+    padding-right: 20px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    ${result ? "" : "display: none;"}
+  `;
+
   let curtainRows = [];
 
   if (result) {
     curtainRows = result.map((item) => (
       <div
         key={item.show.id}
-        className="text"
+        css={css`
+          color: black;
+          font-size: 20px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+
+          &:hover {
+            color: gray;
+            cursor: pointer;
+          }
+        `}
         onClick={() => onShowClick(item.show)}
       >
         {item.show.name}
       </div>
     ));
-  } else {
-    curtainClasses += " hidden";
   }
 
   return (
-    <div className="search">
+    <div
+      css={css`
+        display: flex;
+        flex-direction: column;
+        color: black;
+        align-self: stretch;
+        align-items: stretch;
+        padding: 0 40px;
+      `}
+    >
       <input
         ref={input}
         name="addText"
         id="addText"
         placeholder="Vad letar du efter?"
-        className="searchField"
+        css={css`
+          padding: 15px;
+          border-radius: 10px;
+          font-size: 20px;
+        `}
         onChange={(event) => setSearchText(event.target.value)}
       ></input>
-      <div className="curtainContainer">
-        <div className={curtainClasses}>{curtainRows}</div>
+      <div
+        css={css`
+          position: relative;
+        `}
+      >
+        <div css={curtainStyles}>{curtainRows}</div>
       </div>
     </div>
   );

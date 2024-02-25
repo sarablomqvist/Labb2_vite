@@ -1,5 +1,5 @@
+import { css } from "@emotion/react";
 import { useContext } from "react";
-import "./Footer.css";
 import DeleteAllButton from "./DeleteAllButton";
 import ListContext from "./ListContext";
 
@@ -7,8 +7,20 @@ function Footer() {
   const list = useContext(ListContext);
 
   return (
-    <div className="footer">
-      <span className="count">{list.length} series on the list</span>
+    <div
+      css={css`
+        position: absolute;
+        bottom: 20px;
+      `}
+    >
+      <span
+        css={css`
+          display: block;
+          color: pink;
+        `}
+      >
+        {list.length} series on the list
+      </span>
       <DeleteAllButton />
     </div>
   );
