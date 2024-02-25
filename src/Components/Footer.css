@@ -1,5 +1,9 @@
 .footer {
-  color: pink;
   position: absolute;
-  padding-top: 580px;
+  bottom: 20px;
+}
+
+.count {
+  display: block;
+  color: pink;
 }
