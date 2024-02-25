@@ -1,26 +1,25 @@
-
 .placeholder {
-    color: black;
-    font-size: 20px;
-    padding: 15px;
-    border-radius: 10px;
+  color: black;
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .Curtain {
-    text-align: start;
-    padding-left: 10px;
-    padding-right: 20px;
-    border: 1px solid black;
-    background-color: white;
-    border-radius: 5px;
-    position: absolute;
-    display: none;
+  text-align: start;
+  padding-left: 10px;
+  padding-right: 20px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  display: none;
 }
 
 .text {
-    color: black;
+  color: black;
 }
 
 .text:hover {
-    color: gray;
+  color: gray;
 }

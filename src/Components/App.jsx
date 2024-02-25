@@ -1,21 +1,16 @@
-import { useState, useRef } from 'react'
-import './App.css'
-import BigBox from './BigBox'
+import { useState, useRef } from "react";
+import "./App.css";
+import BigBox from "./BigBox";
 
 function App() {
+  const [list, setList] = useState([]);
+  const myInput = useRef(null);
 
-const [list, setList] = useState([]);
-const myInput = useRef(null);
-
-
-
-
-
-    return (
-        <>
-            <BigBox list={list}/>
-        </>
-    )
+  return (
+    <>
+      <BigBox list={list} />
+    </>
+  );
 }
 
-export default App
+export default App;
